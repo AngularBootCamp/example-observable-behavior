@@ -16,26 +16,33 @@ interface Thing {
 export class AppComponent {
   time: Observable<number>;
   name: Observable<string>;
-  showData: boolean = true;
-  showExtraTime: boolean = true;
+  showData = true;
+  showExtraTime = true;
 
   constructor(http: HttpClient) {
-    this.name = http.get<Thing>('https://swapi.co/api/people/11/', {headers: jsonRequestHeaders}).pipe(
-      tap(thing => console.log(thing)),
-      map(data => data.name));
+    this.name = http
+      .get<Thing>('https://swapi.co/api/people/11/', {
+        headers: jsonRequestHeaders
+      })
+      .pipe(
+        tap(thing => console.log(thing)),
+        map(data => data.name)
+      );
 
     // Example of making an Observable:
-    this.time = new Observable<number>((observer: Observer<number>) => {
-      console.log('Subscribing to time');
-      let handle = setInterval(() => {
-        console.log('emitting time');
-        observer.next(new Date().getTime() % 10000);
-      }, 100);
-      // stop interval on unsubscribe
-      return function () {
-        console.log('Unsubscribing to time');
-        clearInterval(handle);
-      };
-    }).pipe(share());  // Try it without share().
+    this.time = new Observable<number>(
+      (observer: Observer<number>) => {
+        console.log('Subscribing to time');
+        const handle = window.setInterval(() => {
+          console.log('emitting time');
+          observer.next(new Date().getTime() % 10000);
+        }, 100);
+        // stop interval on unsubscribe
+        return () => {
+          console.log('Unsubscribing to time');
+          clearInterval(handle);
+        };
+      }
+    ).pipe(share()); // Try it without share().
   }
 }

@@ -1,7 +1,9 @@
 <section class="card">
   <div class="card-content">
     <div class="card-title">Anakin Component</div>
-    <button class="btn" (click)="showData = !showData">Show/Hide Anakin Data</button>
+    <button class="btn" (click)="showData = !showData">
+      Show/Hide Anakin Data
+    </button>
     <div *ngIf="showData">
       <h5>Anakin Data</h5>
       <pre> {{ name | async }} </pre>
@@ -15,7 +17,9 @@
 <section class="card">
   <div class="card-content">
     <div class="card-title">Another Binding</div>
-    <button class="btn" (click)="showExtraTime = !showExtraTime">Show/Hide Time Data</button>
+    <button class="btn" (click)="showExtraTime = !showExtraTime">
+      Show/Hide Time Data
+    </button>
     <pre *ngIf="showExtraTime"> {{ time | async }} </pre>
   </div>
 </section>
