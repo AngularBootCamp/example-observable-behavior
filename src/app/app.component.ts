@@ -5,7 +5,7 @@ import { map, share, tap } from 'rxjs/operators';
 
 import { jsonRequestHeaders } from './httpUtils';
 
-interface Thing {
+interface Person {
   name: string;
 }
 
@@ -21,12 +21,12 @@ export class AppComponent {
 
   constructor(http: HttpClient) {
     this.name = http
-      .get<Thing>('https://swapi.co/api/people/11/', {
+      .get<Person>('https://swapi.co/api/people/11/', {
         headers: jsonRequestHeaders
       })
       .pipe(
-        tap(thing => console.log(thing)),
-        map(data => data.name)
+        tap(person => console.log(person)),
+        map(person => person.name)
       );
 
     // Example of making an Observable:
