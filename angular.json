@@ -1,6 +1,5 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "defaultProject": "example-observable-behavior",
   "newProjectRoot": "projects",
   "projects": {
     "example-observable-behavior": {
