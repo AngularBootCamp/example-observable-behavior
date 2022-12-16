@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
-import { map, share, tap } from 'rxjs/operators';
+import { Observable, Observer, map, share, tap } from 'rxjs';
 
 import { jsonRequestHeaders } from './httpUtils';
 
