@@ -20,7 +20,7 @@ export class AppComponent {
 
   constructor(http: HttpClient) {
     this.name = http
-      .get<Person>('https://swapi.devhttps://api.angularbootcamp.com/people/11/', {
+      .get<Person>('https://swapi.dev/api/people/11/', {
         headers: jsonRequestHeaders
       })
       .pipe(
