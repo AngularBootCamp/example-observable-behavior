@@ -1,3 +1,4 @@
+import { NgIf, AsyncPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable, Observer, map, share, tap } from 'rxjs';
@@ -10,7 +11,9 @@ interface Person {
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  standalone: true,
+  imports: [NgIf, AsyncPipe]
 })
 export class AppComponent {
   time: Observable<number>;
